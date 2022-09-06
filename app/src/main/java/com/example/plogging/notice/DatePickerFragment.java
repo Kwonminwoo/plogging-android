@@ -1,5 +1,4 @@
-package com.example.plogging;
-
+package com.example.plogging.notice;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Bundle;
@@ -13,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.TextView;
+
+import com.example.plogging.MainActivity;
 
 import java.util.Calendar;
 
@@ -35,7 +36,7 @@ public class DatePickerFragment extends DialogFragment
 
     @Override
     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-        MainActivity activity = (MainActivity)getActivity();
+        NoticeForm activity = (NoticeForm)getActivity();
         activity.processDatePickerResult(year,month,day);
     }
 }

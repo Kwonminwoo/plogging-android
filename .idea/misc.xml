@@ -14,7 +14,11 @@
         <entry key="..\:/Users/primitve3/AndroidStudioProjects/plogging-android/app/src/main/res/layout/activity_main.xml" value="0.17844202898550723" />
         <entry key="..\:/Users/primitve3/AndroidStudioProjects/plogging-android/app/src/main/res/layout/activity_notice_form.xml" value="0.10326086956521739" />
         <entry key="..\:/Users/primitve3/AndroidStudioProjects/plogging-android/app/src/main/res/layout/activity_notice_post.xml" value="0.10326086956521739" />
+        <entry key="..\:/Users/primitve3/AndroidStudioProjects/plogging-android/app/src/main/res/layout/fragment_date_picker.xml" value="0.75" />
+        <entry key="..\:/Users/primitve3/AndroidStudioProjects/plogging-android/app/src/main/res/layout/fragment_date_picker2.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/primitve3/AndroidStudioProjects/plogging-android/app/src/main/res/layout/fragment_home.xml" value="0.10326086956521739" />
+        <entry key="..\:/Users/primitve3/AndroidStudioProjects/plogging-android/app/src/main/res/layout/fragment_notice.xml" value="0.10326086956521739" />
+        <entry key="..\:/Users/primitve3/AndroidStudioProjects/plogging-android/app/src/main/res/layout/notice_item.xml" value="0.17844202898550723" />
       </map>
     </option>
   </component>
