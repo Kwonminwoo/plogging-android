@@ -14,8 +14,8 @@
         android:layout_gravity="right"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_weight="14"/>
-<!--ddd-->
+        android:layout_weight="14" />
+
     <FrameLayout
         android:id="@+id/notice_container"
         android:layout_weight="1"

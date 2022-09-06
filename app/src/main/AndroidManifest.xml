@@ -20,6 +20,12 @@
             android:name=".notice.NoticeForm"
             android:exported="false" />
         <activity
+            android:name=".NoticePost"
+            android:exported="false" />
+        <activity
+            android:name=".NoticeForm"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
