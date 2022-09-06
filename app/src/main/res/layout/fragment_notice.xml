@@ -14,8 +14,8 @@
         android:layout_gravity="right"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_weight="14" />
-
+        android:layout_weight="14"/>
+<!--ddd-->
     <FrameLayout
         android:id="@+id/notice_container"
         android:layout_weight="1"
@@ -25,7 +25,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/recyclerview"/>
+            android:id="@+id/recyclerview_notice"/>
 
     </FrameLayout>
 
