@@ -8,10 +8,18 @@
     android:padding="30px"
     tools:context=".notice.NoticePost">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:layout_marginBottom="17dp"
+        android:text="모집하기" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <ImageView
@@ -91,6 +99,7 @@
         android:text="소개글" />
 
     <Button
+        android:id="@+id/notice_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
