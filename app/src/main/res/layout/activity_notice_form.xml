@@ -4,20 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:onClick="showDatePicker"
     android:orientation="vertical"
     android:paddingLeft="40dp"
-    android:paddingRight="40dp"
     android:paddingTop="50dp"
+    android:paddingRight="40dp"
     tools:context=".notice.NoticeForm">
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
         android:text="모집하기"
         android:textAlignment="center"
-        android:layout_marginBottom="30dp"
-        android:textSize="30dp"/>
+        android:textSize="30dp" />
 
 
     <LinearLayout
@@ -29,9 +30,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
             android:layout_marginRight="15dp"
-            android:text="위치" />
+            android:text="위치"
+            android:textSize="20dp" />
 
         <EditText
             android:id="@+id/formLocation"
@@ -41,23 +42,23 @@
     </LinearLayout>
 
     <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
             android:layout_marginRight="15dp"
-            android:text="날짜" />
+            android:text="날짜"
+            android:textSize="20dp" />
 
         <Button
             android:id="@+id/formDate"
-            android:text="날짜 선택"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            />
+            android:onClick="showDatePicker"
+            android:text="날짜 선택" />
 
     </LinearLayout>
 
@@ -70,9 +71,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
             android:layout_marginRight="15dp"
-            android:text="도구" />
+            android:text="도구"
+            android:textSize="20dp" />
 
         <EditText
             android:id="@+id/formTool"
@@ -91,7 +92,7 @@
             android:id="@+id/formImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="사진 첨부"/>
+            android:text="사진 첨부" />
 
     </LinearLayout>
 
@@ -105,19 +106,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="15dp"
-            android:textSize="20dp"
-            android:text="소개글"/>
+            android:text="소개글"
+            android:textSize="20dp" />
 
 
         <EditText
-            android:layout_height="wrap_content"
             android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
             android:inputType="textMultiLine"
-            android:minLines="6"
-            android:maxLines="10"
             android:lines="8"
-            android:scrollbars="vertical"
-        />
+            android:maxLines="10"
+            android:minLines="6"
+            android:scrollbars="vertical" />
     </LinearLayout>
 
     <LinearLayout
@@ -130,8 +130,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="15dp"
-            android:textSize="15dp"
-            android:text="등록" />
+            android:text="등록"
+            android:textSize="15dp" />
 
     </LinearLayout>
 
