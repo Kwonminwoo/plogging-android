@@ -19,9 +19,9 @@ public class StatisticsFragment extends Fragment {
                              Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_statistics, container, false);
 
-        //RecyclerView recyclerViewParent = rootView.findViewById(R.id.recyclerview_statistics);
-        //recyclerViewParent.setLayoutManager(new LinearLayoutManager(getActivity()));
-        //recyclerViewParent.setAdapter(adapter);
+        RecyclerView recyclerViewParent = rootView.findViewById(R.id.recyclerview_statistics);
+        recyclerViewParent.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerViewParent.setAdapter(adapter);
 
 
 

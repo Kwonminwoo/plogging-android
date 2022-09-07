@@ -3,14 +3,17 @@ package com.example.plogging.notice;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.plogging.R;
 
@@ -20,6 +23,14 @@ import java.util.List;
 public class NoticeFragment extends Fragment {
     Button addNoticeBtn;
     RecyclerView recyclerView;
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        String test = data.getStringExtra("test");
+        Toast.makeText(getContext(), "ddddd", Toast.LENGTH_SHORT).show();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -29,6 +40,8 @@ public class NoticeFragment extends Fragment {
         init(rootView);
         showPost();
         addNotice(addNoticeBtn);
+
+
 
         return rootView;
     }
@@ -68,7 +81,7 @@ public class NoticeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), NoticeForm.class);
-                startActivity(intent);
+                startActivityForResult(intent, 0);
             }
         });
     }
