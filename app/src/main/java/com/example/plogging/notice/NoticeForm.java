@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.os.ParcelFileDescriptor;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +29,7 @@ import java.io.FileDescriptor;
 import java.io.IOException;
 
 public class NoticeForm extends AppCompatActivity {
+    Button button;
     ActivityResultLauncher<Intent> startActivityResult = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
@@ -49,6 +51,18 @@ public class NoticeForm extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notice_form);
+
+        button = findViewById(R.id.register_notice);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.putExtra("register", "test");
+                intent.putExtra("intentName", "noticeForm");
+                setResult(RESULT_OK, intent);
+                finish();
+            }
+        });
     }
 
     public void showDatePicker(View view) {
@@ -105,5 +119,4 @@ public class NoticeForm extends AppCompatActivity {
         parcelFileDescriptor.close();
         return image;
     }
-
 }

@@ -1,8 +1,13 @@
 package com.example.plogging.notice;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.plogging.MainActivity;
 import com.example.plogging.R;
 
 import java.util.ArrayList;
@@ -23,12 +29,31 @@ import java.util.List;
 public class NoticeFragment extends Fragment {
     Button addNoticeBtn;
     RecyclerView recyclerView;
+    ActivityResultLauncher<Intent> startActivityResult;
 
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        String test = data.getStringExtra("test");
-        Toast.makeText(getContext(), "ddddd", Toast.LENGTH_SHORT).show();
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        startActivityResult = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    String text;
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        if( result.getResultCode() == Activity.RESULT_OK && result.getData() != null){
+                            switch (result.getData().getStringExtra("intentName")){
+                                case "noticePost":
+                                    text = result.getData().getStringExtra("register");
+                                    break;
+                                case "noticeForm":
+                                    text = result.getData().getStringExtra("recruitment");
+                                    break;
+                            }
+                        }
+                    };
+                });
     }
 
     @Override
@@ -40,8 +65,6 @@ public class NoticeFragment extends Fragment {
         init(rootView);
         showPost();
         addNotice(addNoticeBtn);
-
-
 
         return rootView;
     }
@@ -58,7 +81,7 @@ public class NoticeFragment extends Fragment {
             public void onItemClick(View v, int position) {
                 Intent intent = new Intent(getActivity(), NoticePost.class);
                 intent.putExtra("postId", position);
-                startActivity(intent);
+                startActivityResult.launch(intent);
             }
         });
     }
@@ -81,9 +104,14 @@ public class NoticeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), NoticeForm.class);
-                startActivityForResult(intent, 0);
+                startActivityResult.launch(intent);
             }
         });
     }
+
+
+
+
+
 
 }

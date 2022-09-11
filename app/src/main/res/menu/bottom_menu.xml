@@ -3,18 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/home"
-        android:enabled="true"
-        android:title="home"
-        app:showAsAction="always"/>
-    <item
         android:id="@+id/notice"
         android:enabled="true"
         android:title="notice"
-        app:showAsAction="always"/>
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/home"
+        android:enabled="true"
+        android:title="home"
+        app:showAsAction="never"/>
+
     <item
         android:id="@+id/satistics"
         android:enabled="true"
         android:title="satistics"
-        app:showAsAction="always"/>
+        app:showAsAction="never"/>
 </menu>

@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.example.plogging.home.HomeFragment;
 import com.example.plogging.notice.NoticeFragment;
 import com.example.plogging.statistics.StatisticsFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         initFragment();
 
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.containers, noticeFragment).commit();
+                .replace(R.id.containers, homeFragment).commit();
 
 
         NavigationBarView naviView = findViewById(R.id.bottom_nav);
@@ -35,12 +36,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
-                    case R.id.home:
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.containers, homeFragment).commit();
                     case R.id.notice:
                         getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.containers, noticeFragment).commit();
+                    case R.id.home:
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.containers, homeFragment).commit();
                     case R.id.satistics:
                         getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.containers, statisticsFragment).commit();

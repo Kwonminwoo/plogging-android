@@ -12,18 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Plogging"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
             android:name=".notice.NoticePost"
             android:exported="false" />
         <activity
             android:name=".notice.NoticeForm"
-            android:exported="false" />
-        <activity
-            android:name=".NoticePost"
-            android:exported="false" />
-        <activity
-            android:name=".NoticeForm"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -35,5 +30,5 @@
             </intent-filter>
         </activity>
     </application>
-
+    <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>
