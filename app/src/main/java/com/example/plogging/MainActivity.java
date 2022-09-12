@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private HomeFragment homeFragment;
     private NoticeFragment noticeFragment;
     private StatisticsFragment statisticsFragment;
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
                 .replace(R.id.containers, homeFragment).commit();
 
 
+
         NavigationBarView naviView = findViewById(R.id.bottom_nav);
         naviView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -39,12 +41,15 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.notice:
                         getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.containers, noticeFragment).commit();
+                        return true;
                     case R.id.home:
                         getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.containers, homeFragment).commit();
+                        return true;
                     case R.id.satistics:
                         getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.containers, statisticsFragment).commit();
+                        return true;
                 }
                 return false;
             }
