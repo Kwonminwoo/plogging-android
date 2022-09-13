@@ -8,12 +8,26 @@
     android:padding="30px"
     tools:context=".notice.NoticePost">
 
-    <TextView
+    <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:layout_marginBottom="17dp"
-        android:text="모집하기" />
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:text="모집하기" />
+
+        <Button
+            android:id="@+id/back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="닫기" />
+
+    </GridLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"

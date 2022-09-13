@@ -9,6 +9,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +35,9 @@ public class StatisticsFragment extends Fragment {
     private List<MyPloggingData> ploggingList;
     private TextView userName;
 
+
+    String[] items = {"2022", "2021", "2020"};
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,8 +54,38 @@ public class StatisticsFragment extends Fragment {
 //        RecyclerView recyclerViewParent = rootView.findViewById(R.id.recyclerview_statistics);
 //        recyclerViewParent.setLayoutManager(new LinearLayoutManager(getActivity()));
 //        recyclerViewParent.setAdapter(adapter);
+        Spinner spinner = rootView.findViewById(R.id.spinner1);
 
         userName = rootView.findViewById(R.id.statistics_user_name);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                //API에 만들어져 있는 R.layout.simple_spinner...를 씀
+                getActivity(),android.R.layout.simple_spinner_item, items
+        );
+
+        //미리 정의된 레이아웃 사용
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+
+        // 스피너 객체에다가 어댑터를 넣어줌
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            // 선택되면
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // 선택했을 때 실행 코드
+                //textView.setText(items[position]);
+                //userName.setText(items[position]);
+            }
+
+            // 아무것도 선택되지 않은 상태일 때
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                //선택 되지 않았을 때 코드
+                //2022
+                //textView.setText("선택: ");
+            }
+        });
+
         testData("2022-1-3", "대구");
         testData("2022-1-5", "서울");
 

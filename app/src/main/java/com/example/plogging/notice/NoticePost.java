@@ -18,6 +18,7 @@ public class NoticePost extends AppCompatActivity {
         setContentView(R.layout.activity_notice_post);
 
         Button noticeBtn =  findViewById(R.id.notice_btn);
+        Button backBtn = findViewById(R.id.back_btn);
 
         noticeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -27,6 +28,13 @@ public class NoticePost extends AppCompatActivity {
                 intent.putExtra("recruitment", text.getText().toString());
                 intent.putExtra("intentName", "noticePost");
                 setResult(RESULT_OK, intent);
+                finish();
+            }
+        });
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 finish();
             }
         });

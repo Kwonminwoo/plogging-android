@@ -29,7 +29,7 @@ import java.io.FileDescriptor;
 import java.io.IOException;
 
 public class NoticeForm extends AppCompatActivity {
-    Button button;
+    Button button, cancleBtn;
     ActivityResultLauncher<Intent> startActivityResult = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
@@ -60,6 +60,14 @@ public class NoticeForm extends AppCompatActivity {
                 intent.putExtra("register", "test");
                 intent.putExtra("intentName", "noticeForm");
                 setResult(RESULT_OK, intent);
+                finish();
+            }
+        });
+
+        cancleBtn = findViewById(R.id.cancle_btn);
+        cancleBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 finish();
             }
         });

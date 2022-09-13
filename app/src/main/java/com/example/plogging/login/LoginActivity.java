@@ -10,6 +10,7 @@ import android.widget.Button;
 import com.example.plogging.MainActivity;
 import com.example.plogging.R;
 import com.kakao.sdk.auth.model.OAuthToken;
+import com.kakao.sdk.common.KakaoSdk;
 import com.kakao.sdk.user.UserApiClient;
 import com.kakao.sdk.user.model.Account;
 
@@ -24,6 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        KakaoSdk.init(this, "DXXvygIO5LMISCyadU1ENwjjOE8");
 
         System.out.println("LoginActivity.onCreatasdasdasdsadsae");
         btn = (Button) findViewById(R.id.loginBtn);
