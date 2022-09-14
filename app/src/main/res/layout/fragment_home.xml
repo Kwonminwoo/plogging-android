@@ -372,25 +372,66 @@
             android:layout_marginBottom="20dp"
             android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:src="@drawable/badge1"
-                android:alpha="0.15"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/badge1"
+                    android:layout_marginBottom="3dp"
+                    android:alpha="0.15"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1회" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginRight="35dp"
+                    android:alpha="0.15"
+                    android:layout_marginBottom="3dp"
+                    android:src="@drawable/badge2" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10회" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
 
             <ImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:layout_marginLeft="35dp"
-                android:layout_marginRight="35dp"
                 android:alpha="0.15"
-                android:src="@drawable/badge2" />
-            <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:alpha="0.15"
+                android:layout_marginBottom="3dp"
                 android:src="@drawable/badge3" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="30회" />
+
+            </LinearLayout>
+
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -399,24 +440,64 @@
             android:layout_marginBottom="20dp"
             android:orientation="horizontal">
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
             <ImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:alpha="0.15"
+                android:layout_marginBottom="3dp"
                 android:src="@drawable/badge4" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="50회" />
 
-            <ImageView
+        </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+        <ImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_marginLeft="35dp"
                 android:layout_marginRight="35dp"
                 android:alpha="0.15"
-                android:src="@drawable/badge5" />
-            <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:alpha="0.15"
-                android:src="@drawable/badge6" />
+            android:layout_marginBottom="3dp"
+            android:src="@drawable/badge5" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="70회" />
+
+        </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:alpha="0.15"
+            android:layout_marginBottom="3dp"
+            android:src="@drawable/badge6" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="100회" />
+
+            </LinearLayout>
 
         </LinearLayout>
         <LinearLayout
@@ -425,25 +506,60 @@
             android:gravity="center"
             android:layout_marginBottom="20dp"
             android:orientation="horizontal">
-
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
             <ImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:alpha="0.15"
+                android:layout_marginBottom="3dp"
                 android:src="@drawable/badge7" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="150회" />
 
+        </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
             <ImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_marginLeft="35dp"
                 android:layout_marginRight="35dp"
                 android:alpha="0.15"
+                android:layout_marginBottom="3dp"
                 android:src="@drawable/badge8" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="170회" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
             <ImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:alpha="0.15"
+                android:layout_marginBottom="3dp"
                 android:src="@drawable/badge9" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="200회" />
+
+        </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>
