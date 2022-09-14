@@ -34,7 +34,7 @@
             android:textSize="20dp" />
 
         <EditText
-            android:id="@+id/formLocation"
+            android:id="@+id/form_location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -61,7 +61,7 @@
             android:text="날짜 선택" />
 
         <TextView
-            android:id="@+id/date_text"
+            android:id="@+id/form_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="17dp"
@@ -83,7 +83,7 @@
             android:textSize="20dp" />
 
         <EditText
-            android:id="@+id/formTool"
+            android:id="@+id/form_kit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -104,7 +104,7 @@
             android:text="사진 첨부" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/form_image"
             android:layout_width="180dp"
             android:layout_height="180dp"/>
 
@@ -125,6 +125,7 @@
 
 
         <EditText
+            android:id="@+id/form_content"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:inputType="textMultiLine" />

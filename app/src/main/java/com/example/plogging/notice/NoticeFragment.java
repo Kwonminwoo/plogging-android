@@ -18,19 +18,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
-import com.example.plogging.MainActivity;
 import com.example.plogging.R;
+import com.example.plogging.dto.User;
+import com.example.plogging.retrofit.PloggingService;
+import com.example.plogging.retrofit.RetrofitClient;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class NoticeFragment extends Fragment {
     Button addNoticeBtn;
     RecyclerView recyclerView;
     ActivityResultLauncher<Intent> startActivityResult;
-
+    List<Notice> posts = new ArrayList<>();
+    List<User> postsUser = new ArrayList<>();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,6 +53,7 @@ public class NoticeFragment extends Fragment {
                             switch (result.getData().getStringExtra("intentName")){
                                 case "noticePost":
                                     text = result.getData().getStringExtra("register");
+                                    Notice notice = (Notice) result.getData().getSerializableExtra("new_notice");
                                     break;
                                 case "noticeForm":
                                     text = result.getData().getStringExtra("recruitment");
@@ -69,6 +77,7 @@ public class NoticeFragment extends Fragment {
         return rootView;
     }
 
+
     private void init(ViewGroup rootView){
         addNoticeBtn = rootView.findViewById(R.id.add_notice_button);
         recyclerView = rootView.findViewById(R.id.recyclerview_notice);
@@ -80,7 +89,8 @@ public class NoticeFragment extends Fragment {
             @Override
             public void onItemClick(View v, int position) {
                 Intent intent = new Intent(getActivity(), NoticePost.class);
-                intent.putExtra("postId", position);
+                Notice notice = posts.get(position);
+                intent.putExtra("select_post", notice); // 선택된 포스트를 넘김
                 startActivityResult.launch(intent);
             }
         });
@@ -90,12 +100,8 @@ public class NoticeFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adapter);
 
-        List<Notice> notices = new ArrayList<>();
-        for(int i = 0; i < 10; i ++){
-            // test
-            notices.add(new Notice(R.drawable.ic_launcher_background, "11", "11", "22", "33" + i));
-        }
-        adapter.setList(notices);
+        getPosts();
+        adapter.setList(posts);
         return adapter;
     }
 
@@ -109,9 +115,52 @@ public class NoticeFragment extends Fragment {
         });
     }
 
+    // DB 리스트 가져오기
+    private void getPosts(){
+        Retrofit retrofit = RetrofitClient.getClient();
+        PloggingService service = retrofit.create(PloggingService.class);
 
+        Call<List<Notice>> call = service.getPosts();
+        call.enqueue(new Callback<List<Notice>>() {
+            @Override
+            public void onResponse(Call<List<Notice>> call, Response<List<Notice>> response) {
+                if(!response.isSuccessful()){
+                    Log.d("response", "msg: " + response.code());
+                    return;
+                }
+                List<Notice> findList = response.body();
+                posts = findList;
+                //posts.get(0).get
+            }
 
+            @Override
+            public void onFailure(Call<List<Notice>> call, Throwable t) {
+                Log.d("PostOnFail", "msg: " + t.getMessage());
+            }
+        });
+    }
 
+    private void getPostUserInfo(){
+        Retrofit retrofit = RetrofitClient.getClient();
+        PloggingService service = retrofit.create(PloggingService.class);
 
+        Call<List<User>> call = service.getPostUser();
+        call.enqueue(new Callback<List<User>>() {
+            @Override
+            public void onResponse(Call<List<User>> call, Response<List<User>> response) {
+                if(!response.isSuccessful()){
+                    Log.d("response", "msg: " + response.code());
+                    return;
+                }
+                List<User> findUserList = response.body();
+                postsUser = findUserList;
+            }
 
+            @Override
+            public void onFailure(Call<List<User>> call, Throwable t) {
+                Log.d("PostUserOnFail", "msg: " + t.getMessage());
+            }
+        });
+
+    }
 }

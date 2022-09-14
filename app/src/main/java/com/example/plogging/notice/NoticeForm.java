@@ -15,21 +15,35 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.ParcelFileDescriptor;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.plogging.R;
+import com.example.plogging.retrofit.PloggingService;
+import com.example.plogging.retrofit.RetrofitClient;
 
 import org.w3c.dom.Text;
 
 import java.io.FileDescriptor;
 import java.io.IOException;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+
 public class NoticeForm extends AppCompatActivity {
-    Button button, cancleBtn;
+    private Button button, cancleBtn;
+    private EditText location;
+    private TextView date;
+    private EditText kit;
+    private ImageView image;
+    private EditText content;
     ActivityResultLauncher<Intent> startActivityResult = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
@@ -59,6 +73,8 @@ public class NoticeForm extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.putExtra("register", "test");
                 intent.putExtra("intentName", "noticeForm");
+                Notice notice = new Notice("loca", "2022-1-1", "바지", "alb.jpg", "contents");
+                intent.putExtra("new_notice", notice);
                 setResult(RESULT_OK, intent);
                 finish();
             }
@@ -73,13 +89,21 @@ public class NoticeForm extends AppCompatActivity {
         });
     }
 
+    private void init(){
+        location = findViewById(R.id.form_location);
+        date = findViewById(R.id.form_date);
+        kit = findViewById(R.id.form_kit);
+        image = findViewById(R.id.form_image);
+        content = findViewById(R.id.form_content);
+    }
+
     public void showDatePicker(View view) {
         DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(getSupportFragmentManager(),"datePicker");
     }
 
     public void processDatePickerResult(int year, int month, int day){
-        TextView date = (TextView) findViewById(R.id.date_text);
+        TextView date = (TextView) findViewById(R.id.form_date);
         String month_string = Integer.toString(month+1);
         if (Integer.parseInt(month_string) < 10) {
             month_string = "0" + month_string;
@@ -105,7 +129,7 @@ public class NoticeForm extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        ImageView image = (ImageView) findViewById(R.id.imageView);
+        ImageView image = (ImageView) findViewById(R.id.form_image);
 
         if (resultCode == RESULT_OK) {
             Uri uri = data.getData();
@@ -126,5 +150,34 @@ public class NoticeForm extends AppCompatActivity {
         Bitmap image = BitmapFactory.decodeFileDescriptor(fileDescriptor);
         parcelFileDescriptor.close();
         return image;
+    }
+
+    private void addPost(){
+        Retrofit retrofit = RetrofitClient.getClient();
+        PloggingService service = retrofit.create(PloggingService.class);
+
+
+        Notice notice = new Notice(1, location.getText().toString(),
+                date.getText().toString(), kit.getText().toString(),
+                image.toString(), content.getText().toString());
+
+        Call<Notice> call = service.addPost(notice);
+        call.enqueue(new Callback<Notice>() {
+            @Override
+            public void onResponse(Call<Notice> call, Response<Notice> response) {
+                if(!response.isSuccessful()){
+                    Log.d("response", "msg: " + response.code());
+                    return;
+                }
+                Notice responseNotice = response.body();
+
+                //Log.d("add_notice", Integer.toString(notice.getPostId()));
+            }
+
+            @Override
+            public void onFailure(Call<Notice> call, Throwable t) {
+                Log.d("addOnFail", "msg: " + t.getMessage());
+            }
+        });
     }
 }

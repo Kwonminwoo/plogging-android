@@ -40,9 +40,13 @@ public class MyPlogging {
         return list;
     }
 
-    public void testSetData(String date, String location){
+    public void inserData(String date, String location){
         String insertSql = "insert into my_plogging('date', 'location') values('" + date + "'"
                 + "," + "'" + location + "'" + ");";
         database.execSQL(insertSql);
+    }
+
+    public void deleteAll(){
+        String deleteSql = "delete from my_ploggin;";
     }
 }
