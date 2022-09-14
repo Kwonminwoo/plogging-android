@@ -58,7 +58,7 @@
                     android:id="@+id/user_postNum_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="90회" />
+                    android:text="0회" />
 
             </LinearLayout>
         </LinearLayout>
@@ -104,7 +104,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="12dp"
-                        android:text="50회" />
+                        android:text="0회" />
                 </LinearLayout>
 
 
@@ -147,7 +147,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
                         android:textSize="12dp"
-                        android:text="44회" />
+                        android:text="0회" />
                 </LinearLayout>
 
 
@@ -182,7 +182,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="10dp"
-                    android:text="10회" />
+                    android:text="0회" />
 
             </LinearLayout>
             <LinearLayout
@@ -209,7 +209,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="10dp"
-                    android:text="10회" />
+                    android:text="0회" />
             </LinearLayout>
 
             <LinearLayout
@@ -236,7 +236,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="10dp"
-                    android:text="10회" />
+                    android:text="0회" />
 
             </LinearLayout>
             <LinearLayout
@@ -263,7 +263,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="10dp"
-                    android:text="10회" />
+                    android:text="0회" />
 
             </LinearLayout>
             <LinearLayout
@@ -290,7 +290,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="10dp"
-                    android:text="10회" />
+                    android:text="0회" />
 
             </LinearLayout>
             <LinearLayout
@@ -317,7 +317,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="10dp"
-                    android:text="10회" />
+                    android:text="0회" />
 
             </LinearLayout>
             <LinearLayout
@@ -345,7 +345,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="10dp"
-                    android:text="10회" />
+                    android:text="0회" />
 
             </LinearLayout>
         </LinearLayout>
@@ -375,18 +375,21 @@
             <ImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:src="@drawable/practice" />
+                android:src="@drawable/badge1"
+                android:alpha="0.15"/>
 
             <ImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_marginLeft="35dp"
                 android:layout_marginRight="35dp"
-                android:src="@drawable/practice" />
+                android:alpha="0.15"
+                android:src="@drawable/badge2" />
             <ImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:src="@drawable/practice" />
+                android:alpha="0.15"
+                android:src="@drawable/badge3" />
 
         </LinearLayout>
         <LinearLayout
@@ -399,18 +402,21 @@
             <ImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:src="@drawable/practice" />
+                android:alpha="0.15"
+                android:src="@drawable/badge4" />
 
             <ImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_marginLeft="35dp"
                 android:layout_marginRight="35dp"
-                android:src="@drawable/practice" />
+                android:alpha="0.15"
+                android:src="@drawable/badge5" />
             <ImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:src="@drawable/practice" />
+                android:alpha="0.15"
+                android:src="@drawable/badge6" />
 
         </LinearLayout>
         <LinearLayout
@@ -423,18 +429,21 @@
             <ImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:src="@drawable/practice" />
+                android:alpha="0.15"
+                android:src="@drawable/badge7" />
 
             <ImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_marginLeft="35dp"
                 android:layout_marginRight="35dp"
-                android:src="@drawable/practice" />
+                android:alpha="0.15"
+                android:src="@drawable/badge8" />
             <ImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:src="@drawable/practice" />
+                android:alpha="0.15"
+                android:src="@drawable/badge9" />
 
         </LinearLayout>
     </LinearLayout>

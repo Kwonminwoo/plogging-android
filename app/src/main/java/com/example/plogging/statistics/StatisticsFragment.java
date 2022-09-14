@@ -13,6 +13,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.plogging.R;
 import com.example.plogging.dto.User;
 import com.example.plogging.notice.Notice;
@@ -33,10 +35,17 @@ public class StatisticsFragment extends Fragment {
     private StatisticsAdapter adapter[] = new StatisticsAdapter[12];
     private List<Notice> noticeList[] = new List[12];
 
+    private int[] recyclerViewId = {R.id.rec_statistics_1, R.id.rec_statistics_2, R.id.rec_statistics_3,
+            R.id.rec_statistics_4, R.id.rec_statistics_5, R.id.rec_statistics_6,
+            R.id.rec_statistics_7, R.id.rec_statistics_8, R.id.rec_statistics_9,
+            R.id.rec_statistics_10, R.id.rec_statistics_11, R.id.rec_statistics_12, };
+
     private MyPlogging myPlogging;
     private List<MyPloggingData> ploggingList[] = new List[12];
     private Spinner spinner;
     private TextView userName;
+
+    private int findYear = 2022;
 
 
     String[] items = {"2022", "2021", "2020"};
@@ -56,9 +65,32 @@ public class StatisticsFragment extends Fragment {
                              Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_statistics, container, false);
 
-        myPlogging.deleteAll();
+        setUser();
+
         userName = rootView.findViewById(R.id.statistics_user_name);
         spinner = rootView.findViewById(R.id.spinner1);
+
+
+        addMyPlogging("2022-1-3", "대구");
+        addMyPlogging("2022-2-5", "서울");
+        addMyPlogging("2022-3-5", "부산");
+
+
+
+
+
+        setSpinner(rootView);
+
+        return rootView;
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        myPlogging.deleteAll();
+    }
+
+    private void setSpinner(ViewGroup rootView){
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 //API에 만들어져 있는 R.layout.simple_spinner...를 씀
@@ -75,54 +107,25 @@ public class StatisticsFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // 선택했을 때 실행 코드
-                //textView.setText(items[position]);
-                //userName.setText(items[position]);
+                ploggingList[0] = getPloggingData(findYear, 1);
+                ploggingList[1] = getPloggingData(findYear, 2);
+                ploggingList[2] = getPloggingData(findYear, 3);
+                setRecyclerViewData();
+                initRecyclerView(rootView);
+                findYear = Integer.parseInt(items[position]);
             }
 
             // 아무것도 선택되지 않은 상태일 때
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                //선택 되지 않았을 때 코드
-                //2022
-                //textView.setText("선택: ");
             }
         });
-
-
-
-//        ploggingList = getPloggingData(2022, 1);
-
-        addMyPlogging("2022-1-3", "대구");
-        addMyPlogging("2022-2-5", "서울");
-        addMyPlogging("2022-3-5", "부산");
-
-        ploggingList[0] = getPloggingData(2022, 1);
-        ploggingList[1] = getPloggingData(2022, 2);
-        ploggingList[2] = getPloggingData(2022, 3);
-
-        setRecyclerViewData();
-        initRecyclerView(rootView);
-
-        setUser();
-
-        return rootView;
     }
 
     private void initRecyclerView(ViewGroup rootView) {
-        recyclerView[0] = rootView.findViewById(R.id.rec_statistics_1);
-        recyclerView[1] = rootView.findViewById(R.id.rec_statistics_2);
-        recyclerView[2] = rootView.findViewById(R.id.rec_statistics_3);
-        recyclerView[3] = rootView.findViewById(R.id.rec_statistics_4);
-        recyclerView[4] = rootView.findViewById(R.id.rec_statistics_5);
-        recyclerView[5] = rootView.findViewById(R.id.rec_statistics_6);
-        recyclerView[6] = rootView.findViewById(R.id.rec_statistics_7);
-        recyclerView[7] = rootView.findViewById(R.id.rec_statistics_8);
-        recyclerView[8] = rootView.findViewById(R.id.rec_statistics_9);
-        recyclerView[9] = rootView.findViewById(R.id.rec_statistics_10);
-        recyclerView[10] = rootView.findViewById(R.id.rec_statistics_11);
-        recyclerView[11] = rootView.findViewById(R.id.rec_statistics_12);
 
         for(int i = 0;i < recyclerView.length;i++){
+            recyclerView[i] = rootView.findViewById(recyclerViewId[i]);
             recyclerView[i].setAdapter(adapter[i]);
             recyclerView[i].setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
         }
@@ -153,6 +156,8 @@ public class StatisticsFragment extends Fragment {
     }
 
     private void setRecyclerViewData(){
+        System.out.println(noticeList.length + "dasfasdasfsaad");
+        // 월별 출력
         for(int i = 0;i < noticeList.length;i++){
             adapter[i] = new StatisticsAdapter(ploggingList[i]);
         }

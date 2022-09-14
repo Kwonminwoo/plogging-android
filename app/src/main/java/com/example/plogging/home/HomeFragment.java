@@ -28,22 +28,20 @@ import retrofit2.Retrofit;
 
 
 public class HomeFragment extends Fragment {
-    TextView userName[] = new TextView[10];
-    TextView userPostNum[] = new TextView[10];
-    ImageView userImage[] = new ImageView[3];
+    private TextView userName[] = new TextView[10];
+    private TextView userPostNum[] = new TextView[10];
+    private ImageView userImage[] = new ImageView[3];
 
-    int[] nameId = {R.id.user_name_1, R.id.user_name_2, R.id.user_name_3,
+    private int[] nameId = {R.id.user_name_1, R.id.user_name_2, R.id.user_name_3,
             R.id.user_name_4, R.id.user_name_5, R.id.user_name_6, R.id.user_name_7,
             R.id.user_name_8, R.id.user_name_9, R.id.user_name_10};
 
-    int[] postNumId = {R.id.user_postNum_1, R.id.user_postNum_2, R.id.user_postNum_3,
+    private int[] postNumId = {R.id.user_postNum_1, R.id.user_postNum_2, R.id.user_postNum_3,
             R.id.user_postNum_4, R.id.user_postNum_5, R.id.user_postNum_6, R.id.user_postNum_7,
             R.id.user_postNum_8, R.id.user_postNum_9, R.id.user_postNum_10};
 
-    int[] imageId = {R.id.user_image_1, R.id.user_image_2, R.id.user_image_3};
-
-
-    TextView myRank;
+    private int[] imageId = {R.id.user_image_1, R.id.user_image_2, R.id.user_image_3};
+    private TextView myRank;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -73,15 +71,15 @@ public class HomeFragment extends Fragment {
 
     private void setRank(List<User> list){
         Collections.sort(list, Collections.reverseOrder());
-        userName[0].setText(list.get(0).getUserName());
         for(int i = 0;i < list.size();i++){
             userName[i].setText(list.get(i).getUserName());
-            userPostNum[i].setText(Integer.toString(list.get(i).getPostNum()));
+            userPostNum[i].setText(list.get(i).getPostNum()+ "회");
         }
         for(int i = 0;i < ((list.size() < userImage.length) ? list.size():userImage.length);i++){
             userImage[i].setImageAlpha(R.drawable.ic_launcher_foreground);
         }
 
+        myRank.setText("1");
     }
 
     private void getUserData(){
