@@ -520,7 +520,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="150회" />
+                android:text="50위 진입" />
 
         </LinearLayout>
 
@@ -540,7 +540,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="170회" />
+                    android:text="20위 진입" />
 
             </LinearLayout>
             <LinearLayout
@@ -557,7 +557,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="200회" />
+                android:text="1위 달성" />
 
         </LinearLayout>
 
