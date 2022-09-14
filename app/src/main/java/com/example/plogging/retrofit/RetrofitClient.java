@@ -5,7 +5,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
-    private static final String SERVER_IP = "http://192.168.1.14:8080";
+    private static final String SERVER_IP = "http://192.168.144.137:8080";
     private static Retrofit retrofit = null;
 
 

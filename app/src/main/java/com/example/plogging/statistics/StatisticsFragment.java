@@ -1,12 +1,10 @@
 package com.example.plogging.statistics;
 
 import android.os.Bundle;
-
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,8 +13,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.example.plogging.R;
 import com.example.plogging.dto.User;
 import com.example.plogging.notice.Notice;
@@ -24,10 +20,8 @@ import com.example.plogging.retrofit.RetrofitClient;
 import com.example.plogging.retrofit.PloggingService;
 import com.example.plogging.sqlite_database.MyPlogging;
 import com.example.plogging.sqlite_database.MyPloggingData;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -126,7 +120,6 @@ public class StatisticsFragment extends Fragment {
         recyclerView[9] = rootView.findViewById(R.id.rec_statistics_10);
         recyclerView[10] = rootView.findViewById(R.id.rec_statistics_11);
         recyclerView[11] = rootView.findViewById(R.id.rec_statistics_12);
-
 
         for(int i = 0;i < recyclerView.length;i++){
             recyclerView[i].setAdapter(adapter[i]);

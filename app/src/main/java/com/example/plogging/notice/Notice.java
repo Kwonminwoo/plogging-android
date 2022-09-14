@@ -19,6 +19,11 @@ public class Notice implements Serializable {
     private String image;
     private String content;
 
+    private List<User> userList = new ArrayList<>();
+
+    public Notice() {
+
+    }
 
     public Notice(int userId, int postId, String location, String date, String kit, String image, String content) {
         this.userId = userId;
@@ -50,6 +55,14 @@ public class Notice implements Serializable {
     public Notice(String location, String date) {
         this.location = location;
         this.date = date;
+    }
+
+    public void addUser(User user){
+        userList.add(user);
+    }
+
+    public int getUserNum(){
+        return 0;
     }
 
     public int getUserId() {
@@ -107,5 +120,6 @@ public class Notice implements Serializable {
     public void setContent(String content) {
         this.content = content;
     }
+
 
 }
