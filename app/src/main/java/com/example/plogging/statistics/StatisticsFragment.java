@@ -20,6 +20,7 @@ import com.example.plogging.retrofit.RetrofitClient;
 import com.example.plogging.retrofit.PloggingService;
 import com.example.plogging.sqlite_database.MyPlogging;
 import com.example.plogging.sqlite_database.MyPloggingData;
+
 import java.util.ArrayList;
 import java.util.List;
 import retrofit2.Call;
@@ -34,7 +35,7 @@ public class StatisticsFragment extends Fragment {
 
     private MyPlogging myPlogging;
     private List<MyPloggingData> ploggingList[] = new List[12];
-
+    private Spinner spinner;
     private TextView userName;
 
 
@@ -57,7 +58,7 @@ public class StatisticsFragment extends Fragment {
 
         myPlogging.deleteAll();
         userName = rootView.findViewById(R.id.statistics_user_name);
-
+        spinner = rootView.findViewById(R.id.spinner1);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 //API에 만들어져 있는 R.layout.simple_spinner...를 씀
@@ -89,7 +90,7 @@ public class StatisticsFragment extends Fragment {
 
 
 
-        ploggingList = getPloggingData(2022, 1);
+//        ploggingList = getPloggingData(2022, 1);
 
         addMyPlogging("2022-1-3", "대구");
         addMyPlogging("2022-2-5", "서울");
