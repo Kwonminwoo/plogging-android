@@ -16,9 +16,7 @@
         android:theme="@style/Theme.Plogging"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
+
         <activity
             android:name=".notice.NoticePost"
             android:exported="false" />
@@ -26,7 +24,7 @@
             android:name=".notice.NoticeForm"
             android:exported="false" />
         <activity
-            android:name=".login.LoginActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

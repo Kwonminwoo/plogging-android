@@ -7,14 +7,31 @@
     android:weightSum="15"
     tools:context=".notice.NoticeFragment">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:weightSum="10">
 
-    <Button
-        android:id="@+id/add_notice_button"
-        android:text="add"
-        android:layout_gravity="right"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_weight="14" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25dp"
+            android:layout_marginBottom="15dp"
+            android:text="최신 글" />
+
+        <Button
+            android:id="@+id/add_notice_button"
+            android:text="글 올리기"
+            android:layout_marginLeft="210dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
 
     <FrameLayout
         android:id="@+id/notice_container"

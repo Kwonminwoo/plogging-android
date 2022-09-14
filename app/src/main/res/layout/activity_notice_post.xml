@@ -32,7 +32,7 @@
             android:id="@+id/notice_user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="유저 이름"
+            android:text="유저 이름: "
             android:textSize="20dp"/>
         
     </LinearLayout>
@@ -73,15 +73,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="17dp"
-            android:text="참여 인원 2명" />
+            android:text="참여 인원: " />
         
     </LinearLayout>
     
     <TextView
-        android:id="@+id/notice_tools"
+        android:id="@+id/notice_kits"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="필요 도구 | 봉투, 집게"
+        android:text="필요 도구 | "
         android:textSize="17dp"
         android:layout_marginBottom="20dp"/>
 
@@ -103,7 +103,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="17dp"
-        android:text="소개글" />
+        android:text="소개글\n- " />
 
     <Button
         android:id="@+id/notice_btn"

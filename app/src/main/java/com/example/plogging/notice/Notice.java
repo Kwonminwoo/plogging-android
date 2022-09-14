@@ -1,37 +1,71 @@
 package com.example.plogging.notice;
 
-import android.graphics.Bitmap;
-import android.media.Image;
+import com.example.plogging.dto.User;
+import com.google.gson.annotations.SerializedName;
 
-public class Notice {
-    private int image;
-    private String userName;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Notice implements Serializable {
+    @SerializedName("user_id")
+    private int userId;
+    @SerializedName("post_id")
+    private int postId;
+    @SerializedName("location")
     private String location;
     private String date;
-    private String personNum;
+    private String kit;
+    private String image;
+    private String content;
 
-    public Notice(int image, String userName, String location, String date, String personNum) {
-        this.image = image;
-        this.userName = userName;
+
+    public Notice(int userId, int postId, String location, String date, String kit, String image, String content) {
+        this.userId = userId;
+        this.postId = postId;
         this.location = location;
         this.date = date;
-        this.personNum = personNum;
-    }
-
-    public int getImage() {
-        return image;
-    }
-
-    public void setImage(int image) {
+        this.kit = kit;
         this.image = image;
+        this.content = content;
     }
 
-    public String getUserName() {
-        return userName;
+    public Notice(int userId, String location, String date, String kit, String image, String content) {
+        this.userId = userId;
+        this.location = location;
+        this.date = date;
+        this.kit = kit;
+        this.image = image;
+        this.content = content;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public Notice(String location, String date, String kit, String image, String content) {
+        this.location = location;
+        this.date = date;
+        this.kit = kit;
+        this.image = image;
+        this.content = content;
+    }
+
+    public Notice(String location, String date) {
+        this.location = location;
+        this.date = date;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getPostId() {
+        return postId;
+    }
+
+    public void setPostId(int postId) {
+        this.postId = postId;
     }
 
     public String getLocation() {
@@ -50,11 +84,28 @@ public class Notice {
         this.date = date;
     }
 
-    public String getPersonNum() {
-        return personNum;
+    public String getKit() {
+        return kit;
     }
 
-    public void setPersonNum(String personNum) {
-        this.personNum = personNum;
+    public void setKit(String kit) {
+        this.kit = kit;
     }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
 }

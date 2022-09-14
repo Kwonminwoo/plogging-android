@@ -10,8 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.kakao.sdk.common.KakaoSdk;
-import com.kakao.sdk.common.util.Utility;
+
 import com.example.plogging.home.HomeFragment;
 import com.example.plogging.notice.NoticeFragment;
 import com.example.plogging.statistics.StatisticsFragment;
@@ -32,10 +31,10 @@ public class MainActivity extends AppCompatActivity {
         initFragment();
 
         // Log.d("hash", Utility.INSTANCE.getKeyHash(this));
-        KakaoSdk.init(this, "DXXvygIO5LMISCyadU1ENwjjOE8");
+        //KakaoSdk.init(this, "DXXvygIO5LMISCyadU1ENwjjOE8");
 
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.containers, homeFragment).commit();
+                .replace(R.id.containers, noticeFragment).commit();
 
         NavigationBarView naviView = findViewById(R.id.bottom_nav);
         naviView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -66,4 +65,5 @@ public class MainActivity extends AppCompatActivity {
         noticeFragment = new NoticeFragment();
         statisticsFragment = new StatisticsFragment();
     }
+
 }

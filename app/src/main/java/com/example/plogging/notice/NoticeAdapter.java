@@ -77,11 +77,13 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.ViewHolder
             });
         }
         public void setItem(Notice item){
-            userImage.setImageAlpha(item.getImage());
-            userName.setText(item.getUserName());
+//            Bitmap bitmap = StringBase64.StringToBitmap(item.getImage());
+//            userImage.setImageBitmap(bitmap);
+            userImage.setImageAlpha(R.drawable.ic_launcher_background);
+            userName.setText("null");
             location.setText(item.getLocation());
             date.setText(item.getDate());
-            personNum.setText(item.getPersonNum());
+//            personNum.setText(item.getUserListSize());
         }
     }
 }
