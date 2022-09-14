@@ -15,9 +15,7 @@
         android:theme="@style/Theme.Plogging"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-        <activity
-            android:name=".login.LoginActivity"
-            android:exported="false" />
+
         <activity
             android:name=".notice.NoticePost"
             android:exported="false" />
