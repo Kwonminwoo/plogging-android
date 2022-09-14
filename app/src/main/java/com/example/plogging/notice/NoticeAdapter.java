@@ -1,5 +1,6 @@
 package com.example.plogging.notice;
 
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,12 +11,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.plogging.R;
+import com.example.plogging.dto.StringBase64;
+import com.example.plogging.dto.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.ViewHolder> {
     List<Notice> items = new ArrayList<>();
+    List<User> userList = new ArrayList<>();
     private OnItemClickListener listener = null;
 
     interface OnItemClickListener{
@@ -36,8 +40,8 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Notice notice = items.get(position);
-        holder.setItem(notice);
-
+        User user = userList.get(position);
+        holder.setItem(notice, user);
     }
 
     @Override
@@ -45,8 +49,9 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.ViewHolder
         return items.size();
     }
 
-    public void setList(List<Notice> list){
+    public void setList(List<Notice> list, List<User> users){
         items = list;
+        userList = users;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
@@ -76,14 +81,15 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.ViewHolder
                 }
             });
         }
-        public void setItem(Notice item){
+        public void setItem(Notice item, User user){
 //            Bitmap bitmap = StringBase64.StringToBitmap(item.getImage());
 //            userImage.setImageBitmap(bitmap);
             userImage.setImageAlpha(R.drawable.ic_launcher_background);
-            userName.setText("null");
+            userName.setText(user.getUserName());
             location.setText(item.getLocation());
             date.setText(item.getDate());
-//            personNum.setText(item.getUserListSize());
+
+            personNum.setText(Integer.toString(item.getUserNum()));
         }
     }
 }

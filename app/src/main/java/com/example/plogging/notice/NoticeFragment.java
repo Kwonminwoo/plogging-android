@@ -101,7 +101,8 @@ public class NoticeFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
         getPosts();
-        adapter.setList(posts);
+        getPostUserInfo();
+        adapter.setList(posts, postsUser);
         return adapter;
     }
 
