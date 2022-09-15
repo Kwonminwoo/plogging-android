@@ -76,6 +76,8 @@ public class NoticeForm extends AppCompatActivity {
                 Notice notice = new Notice("loca", "2022-1-1", "바지", "alb.jpg", "contents");
                 intent.putExtra("new_notice", notice);
                 setResult(RESULT_OK, intent);
+
+                addPost();
                 finish();
             }
         });
@@ -156,22 +158,21 @@ public class NoticeForm extends AppCompatActivity {
         Retrofit retrofit = RetrofitClient.getClient();
         PloggingService service = retrofit.create(PloggingService.class);
 
+//        Notice notice = new Notice(1, location.getText().toString(),
+//                date.getText().toString(), kit.getText().toString(),
+//                image.toString(), content.getText().toString());
 
-        Notice notice = new Notice(1, location.getText().toString(),
-                date.getText().toString(), kit.getText().toString(),
-                image.toString(), content.getText().toString());
+        Notice notice = new Notice(6, "dd55" ," dd"," zdz"," dzdz","dd");
 
         Call<Notice> call = service.addPost(notice);
         call.enqueue(new Callback<Notice>() {
             @Override
             public void onResponse(Call<Notice> call, Response<Notice> response) {
                 if(!response.isSuccessful()){
-                    Log.d("response", "msg: " + response.code());
+                    Log.d("addPostResponse", "msg: " + response.code());
                     return;
                 }
-                Notice responseNotice = response.body();
-
-                //Log.d("add_notice", Integer.toString(notice.getPostId()));
+                response.body();
             }
 
             @Override
@@ -179,5 +180,6 @@ public class NoticeForm extends AppCompatActivity {
                 Log.d("addOnFail", "msg: " + t.getMessage());
             }
         });
+
     }
 }

@@ -57,12 +57,14 @@ public class Notice implements Serializable {
         this.date = date;
     }
 
+
+
     public void addUser(User user){
         userList.add(user);
     }
 
     public int getUserNum(){
-        return 0;
+        return userList.size();
     }
 
     public int getUserId() {

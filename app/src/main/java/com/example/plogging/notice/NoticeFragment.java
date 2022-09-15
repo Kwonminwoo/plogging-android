@@ -42,6 +42,14 @@ public class NoticeFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getPosts();
+        getPostUserInfo();
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_notice, container, false);
 
         startActivityResult = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -54,6 +62,7 @@ public class NoticeFragment extends Fragment {
                                 case "noticePost":
                                     text = result.getData().getStringExtra("register");
                                     Notice notice = (Notice) result.getData().getSerializableExtra("new_notice");
+                                    System.out.println();
                                     break;
                                 case "noticeForm":
                                     text = result.getData().getStringExtra("recruitment");
@@ -62,15 +71,11 @@ public class NoticeFragment extends Fragment {
                         }
                     };
                 });
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_notice, container, false);
 
 
         init(rootView);
+
+
         showPost();
         addNotice(addNoticeBtn);
 
@@ -90,7 +95,9 @@ public class NoticeFragment extends Fragment {
             public void onItemClick(View v, int position) {
                 Intent intent = new Intent(getActivity(), NoticePost.class);
                 Notice notice = posts.get(position);
+                User user = postsUser.get(position);
                 intent.putExtra("select_post", notice); // 선택된 포스트를 넘김
+                intent.putExtra("select_post_user", user);
                 startActivityResult.launch(intent);
             }
         });
@@ -100,8 +107,6 @@ public class NoticeFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adapter);
 
-        getPosts();
-        getPostUserInfo();
         adapter.setList(posts, postsUser);
         return adapter;
     }
@@ -112,31 +117,6 @@ public class NoticeFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), NoticeForm.class);
                 startActivityResult.launch(intent);
-            }
-        });
-    }
-
-    // DB 리스트 가져오기
-    private void getPosts(){
-        Retrofit retrofit = RetrofitClient.getClient();
-        PloggingService service = retrofit.create(PloggingService.class);
-
-        Call<List<Notice>> call = service.getPosts();
-        call.enqueue(new Callback<List<Notice>>() {
-            @Override
-            public void onResponse(Call<List<Notice>> call, Response<List<Notice>> response) {
-                if(!response.isSuccessful()){
-                    Log.d("response", "msg: " + response.code());
-                    return;
-                }
-                List<Notice> findList = response.body();
-                posts = findList;
-                //posts.get(0).get
-            }
-
-            @Override
-            public void onFailure(Call<List<Notice>> call, Throwable t) {
-                Log.d("PostOnFail", "msg: " + t.getMessage());
             }
         });
     }
@@ -156,12 +136,35 @@ public class NoticeFragment extends Fragment {
                 List<User> findUserList = response.body();
                 postsUser = findUserList;
             }
-
             @Override
             public void onFailure(Call<List<User>> call, Throwable t) {
                 Log.d("PostUserOnFail", "msg: " + t.getMessage());
             }
         });
 
+    }
+
+    // DB 리스트 가져오기
+    private void getPosts(){
+        Retrofit retrofit = RetrofitClient.getClient();
+        PloggingService service = retrofit.create(PloggingService.class);
+
+        Call<List<Notice>> call = service.getPosts();
+        call.enqueue(new Callback<List<Notice>>() {
+            @Override
+            public void onResponse(Call<List<Notice>> call, Response<List<Notice>> response) {
+                if(!response.isSuccessful()){
+                    Log.d("response", "msg: " + response.code());
+                    return;
+                }
+                List<Notice> findList = response.body();
+                posts = findList;
+            }
+
+            @Override
+            public void onFailure(Call<List<Notice>> call, Throwable t) {
+                Log.d("PostOnFail", "msg: " + t.getMessage());
+            }
+        });
     }
 }

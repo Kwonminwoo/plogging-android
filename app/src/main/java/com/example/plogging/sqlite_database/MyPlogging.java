@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MyPlogging {
-    private SqliteDBHelper dbHelper;
-    private SQLiteDatabase database;
-    private Context context;
+    private static SqliteDBHelper dbHelper;
+    private static SQLiteDatabase database;
+    private static Context context;
 
     public MyPlogging(Context context) {
         this.context = context;
@@ -25,7 +25,7 @@ public class MyPlogging {
     public List<MyPloggingData> getMyPlogging(int year, int month){
         List<MyPloggingData> list = new ArrayList<>();
 
-        String findDate = "" + year + "-" + month + "%"; // year-month로 시작하는 거
+        String findDate = "" + year + "-" + month + "-%"; // year-month로 시작하는 거
         System.out.println("findata: " + findDate);
         String selectSql = "select * from my_plogging where date like"
                 + "'" + findDate + "'" + ";";
@@ -40,13 +40,19 @@ public class MyPlogging {
         return list;
     }
 
-    public void inserData(String date, String location){
+    public static void getData(){
+        String selectSql = "select * from my_plogging;";
+        database.execSQL(selectSql);
+    }
+
+    public static void inserData(String date, String location){
         String insertSql = "insert into my_plogging('date', 'location') values('" + date + "'"
                 + "," + "'" + location + "'" + ");";
         database.execSQL(insertSql);
     }
 
     public void deleteAll(){
-        String deleteSql = "delete from my_ploggin;";
+        String deleteSql = "delete from my_plogging;";
+        database.execSQL(deleteSql);
     }
 }

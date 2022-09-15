@@ -46,6 +46,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
@@ -53,10 +54,14 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_home, container, false);
         init(rootView);
-        getUserData();
         return rootView;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        getUserData();
+    }
 
     private void init(ViewGroup rootView){
         for(int i = 0;i < userName.length; i++){
@@ -69,18 +74,7 @@ public class HomeFragment extends Fragment {
         myRank = rootView.findViewById(R.id.my_rank);
     }
 
-    private void setRank(List<User> list){
-        Collections.sort(list, Collections.reverseOrder());
-        for(int i = 0;i < list.size();i++){
-            userName[i].setText(list.get(i).getUserName());
-            userPostNum[i].setText(list.get(i).getPostNum()+ "회");
-        }
-        for(int i = 0;i < ((list.size() < userImage.length) ? list.size():userImage.length);i++){
-            userImage[i].setImageAlpha(R.drawable.ic_launcher_foreground);
-        }
 
-        myRank.setText("1");
-    }
 
     private void getUserData(){
         Retrofit retrofit = RetrofitClient.getClient();
@@ -106,5 +100,18 @@ public class HomeFragment extends Fragment {
                 Log.d("RankOnFail", "msg: " + t.getMessage());
             }
         });
+    }
+
+    private void setRank(List<User> list){
+        Collections.sort(list, Collections.reverseOrder());
+        for(int i = 0;i < list.size();i++){
+            userName[i].setText(list.get(i).getUserName());
+            userPostNum[i].setText(list.get(i).getPostNum()+ "회");
+        }
+        for(int i = 0;i < ((list.size() < userImage.length) ? list.size():userImage.length);i++){
+            userImage[i].setImageAlpha(R.drawable.ic_launcher_foreground);
+        }
+
+        myRank.setText("1");
     }
 }

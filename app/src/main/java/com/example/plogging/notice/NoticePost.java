@@ -12,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.plogging.R;
+import com.example.plogging.dto.User;
+import com.example.plogging.sqlite_database.MyPlogging;
 
 import java.io.Serializable;
 
@@ -23,7 +25,7 @@ public class NoticePost extends AppCompatActivity {
     TextView kits;
     ImageView image;
     TextView content;
-
+    Notice notice;
     Intent intent = new Intent();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,18 +36,24 @@ public class NoticePost extends AppCompatActivity {
 
         Button noticeBtn =  findViewById(R.id.notice_btn);
         Button backBtn = findViewById(R.id.back_btn);
-        setPostData();
 
+        setPostData();
 
         noticeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TextView text = findViewById(R.id.notice_user_name);
-                intent.putExtra("recruitment", text.getText().toString());
                 intent.putExtra("intentName", "noticePost");
+                //User user = new User();
+                //intent.putExtra("application_user" user)
+                // 카카오 로그인으로 user id 가져오고 그거에 맞는 user객체를 가져와야 함.
 
+                User user = new User("userName", "image"); // 테스트
+                notice.addUser(user);
 
+                System.out.println("userggggggggggNum: "+notice.getUserNum());
                 setResult(RESULT_OK, intent);
+
+                //MyPlogging.inserData(date.getText().toString(), location.getText().toString());
                 finish();
             }
         });
@@ -68,13 +76,15 @@ public class NoticePost extends AppCompatActivity {
     }
 
     private void setPostData(){
-        Notice notice = (Notice) getIntent().getSerializableExtra("select_post");
+        notice = (Notice) getIntent().getSerializableExtra("select_post");
+        User user = (User) getIntent().getSerializableExtra("select_post_user");
+        
         location.setText(notice.getLocation());
         date.setText(notice.getDate());
         kits.append(notice.getKit());
         image.setImageURI(null);
         content.append(notice.getContent());
+        userName.append(user.getUserName());
     }
-
 
 }

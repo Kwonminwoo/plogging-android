@@ -2,7 +2,9 @@ package com.example.plogging.dto;
 
 import com.google.gson.annotations.SerializedName;
 
-public class User implements Comparable<User>{
+import java.io.Serializable;
+
+public class User implements Comparable<User>, Serializable {
     @SerializedName("user_id")
     private int userId;
     @SerializedName("user_name")

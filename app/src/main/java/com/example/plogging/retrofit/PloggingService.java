@@ -7,6 +7,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 
@@ -23,6 +24,8 @@ public interface PloggingService {
     @GET("/getRank")
     Call<List<User>> getRank();
 
+
+    @FormUrlEncoded
     @POST("/upload")
-    Call<Notice> addPost(@Field("notice") Notice notice);
+    Call<Notice> addPost(Notice notice);
 }

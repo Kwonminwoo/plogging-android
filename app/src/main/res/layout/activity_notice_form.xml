@@ -35,6 +35,7 @@
 
         <EditText
             android:id="@+id/form_location"
+            android:text="위치"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -65,7 +66,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="17dp"
-            android:text="yyyy-mm-dd" />
+            android:text="2022-1-1" />
 
     </LinearLayout>
 
@@ -84,6 +85,7 @@
 
         <EditText
             android:id="@+id/form_kit"
+            android:text="도구"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -105,6 +107,7 @@
 
         <ImageView
             android:id="@+id/form_image"
+            android:src="@drawable/x"
             android:layout_width="180dp"
             android:layout_height="180dp"/>
 
@@ -126,6 +129,7 @@
 
         <EditText
             android:id="@+id/form_content"
+            android:text="더러움"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:inputType="textMultiLine" />

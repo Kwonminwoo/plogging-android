@@ -44,6 +44,7 @@ public class StatisticsFragment extends Fragment {
     private List<MyPloggingData> ploggingList[] = new List[12];
     private Spinner spinner;
     private TextView userName;
+    private User user;
 
     private int findYear = 2022;
 
@@ -58,6 +59,7 @@ public class StatisticsFragment extends Fragment {
             ploggingList[i] = new ArrayList<>();
         }
         setSQLite();
+        setUser();
     }
 
     @Override
@@ -65,21 +67,17 @@ public class StatisticsFragment extends Fragment {
                              Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_statistics, container, false);
 
-        setUser();
 
         userName = rootView.findViewById(R.id.statistics_user_name);
         spinner = rootView.findViewById(R.id.spinner1);
 
-
-        addMyPlogging("2022-1-3", "대구");
-        addMyPlogging("2022-2-5", "서울");
-        addMyPlogging("2022-3-5", "부산");
-
-
-
+        myPlogging.deleteAll(); // 테스트시에만 씀
 
 
         setSpinner(rootView);
+
+
+        //userName.setText(user.getUserName()); // 유저 이름 설정
 
         return rootView;
     }
@@ -107,12 +105,13 @@ public class StatisticsFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // 선택했을 때 실행 코드
-                ploggingList[0] = getPloggingData(findYear, 1);
-                ploggingList[1] = getPloggingData(findYear, 2);
-                ploggingList[2] = getPloggingData(findYear, 3);
+                findYear = Integer.parseInt(items[position]);
+
+                clearRecyclerView();
+                setPloggingList();
+
                 setRecyclerViewData();
                 initRecyclerView(rootView);
-                findYear = Integer.parseInt(items[position]);
             }
 
             // 아무것도 선택되지 않은 상태일 때
@@ -131,6 +130,22 @@ public class StatisticsFragment extends Fragment {
         }
     }
 
+    private void setPloggingList(){
+        addMyPlogging("2022-1-3", "대구");
+        addMyPlogging("2022-12-3", "서울");
+        addMyPlogging("2022-7-24", "천안");
+
+        for(int i = 0; i < 12;i++){
+            ploggingList[i] = getPloggingData(findYear, i + 1);
+        }
+    }
+
+    private void clearRecyclerView(){
+        for(int i = 0;i < ploggingList.length;i++){
+            ploggingList[i].clear();
+        }
+    }
+
     // user DB 호출
     private void setUser(){
         Retrofit retrofit = RetrofitClient.getClient();
@@ -144,19 +159,18 @@ public class StatisticsFragment extends Fragment {
                     Log.d("response", "msg: " + response.code());
                     return;
                 }
-                userName.setText(response.body().getUserName()); // 유저 이름 설정
+                user = response.body();
+                userName.setText(user.getUserName());
             }
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-                System.out.println("caasdsasdadll.toString() = " + call.toString());
                 Log.d("UserOnFail", "msg: " + t.getMessage());
             }
         });
     }
 
     private void setRecyclerViewData(){
-        System.out.println(noticeList.length + "dasfasdasfsaad");
         // 월별 출력
         for(int i = 0;i < noticeList.length;i++){
             adapter[i] = new StatisticsAdapter(ploggingList[i]);
