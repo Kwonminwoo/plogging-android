@@ -20,10 +20,13 @@
             android:name=".notice.NoticePost"
             android:exported="false" />
         <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".notice.NoticeForm"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".login.Login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,16 +35,16 @@
             </intent-filter>
         </activity>
 
-<!--        <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"-->
-<!--            android:exported="true">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.VIEW" />-->
-<!--                <category android:name="android.intent.category.DEFAULT" />-->
-<!--                <category android:name="android.intent.category.BROWSABLE" />-->
-<!--                <data android:host="oauth"-->
-<!--                    android:scheme="kakao07fc38cf333014fea26061bbbfab19b8" />-->
-<!--            </intent-filter>-->
-<!--        </activity>-->
+        <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:host="oauth"
+                    android:scheme="kakao07fc38cf333014fea26061bbbfab19b8" />
+            </intent-filter>
+        </activity>
     </application>
     <!-- 인터넷 사용 권한 설정 -->
     <uses-permission android:name="android.permission.INTERNET"/>

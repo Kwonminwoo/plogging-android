@@ -5,12 +5,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".login.LoginActivity">
+    android:gravity="center"
+    tools:context=".login.Login">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
-    <Button
-        android:id="@+id/loginBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Login" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="150px"
+            android:textAlignment="center"
+            android:text="Plogging" />
+    </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="122dp"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/kakaoBtn"
+            android:layout_width="match_parent"
+            android:layout_height="114dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/kakao_login_medium_narrow" />
+    </LinearLayout>
 </LinearLayout>
